@@ -1,12 +1,22 @@
 import { LanguageDialog } from './languageDialog'
-
 import { Link } from 'react-router-dom'
+
 import { useState } from 'react'
+import { useLanguage } from '@/context/languageContext'
 
 import { FiArrowRight, FiMenu, FiX } from 'react-icons/fi'
 
 export function SideBar() {
+  const { language } = useLanguage()
+
   const [isOpenMenuBar, setIsOpenMenuBar] = useState(false)
+
+  if (isOpenMenuBar) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = 'auto'
+  }
+
   function handelShowNavBarMobile() {
     setIsOpenMenuBar(!isOpenMenuBar)
   }
@@ -17,7 +27,7 @@ export function SideBar() {
       </button>
       {isOpenMenuBar && (
         <div
-          className={`w-60 h-[90svh] px-4 py-2 absolute -top-2 right-0 rounded-l-xl bg-gray-950 
+          className={`w-60 h-[80svh] px-4 py-2 absolute -top-2 right-0 rounded-l-xl bg-gray-950 
           transform transition-transform duration-300 ease-in-out ${
             isOpenMenuBar ? 'slide-in-right' : 'slide-out-right'
           }`}
@@ -40,7 +50,7 @@ export function SideBar() {
             >
               <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
               <span className="group-hover:translate-x-2 transition-all">
-                Project
+                {language == 'en' ? 'Pro' : 'Idioma'}
               </span>
             </Link>
 
@@ -52,7 +62,7 @@ export function SideBar() {
             >
               <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
               <span className="group-hover:translate-x-2 transition-all">
-                About
+                {language == 'en' ? 'About' : 'Sobre mim'}
               </span>
             </Link>
 
@@ -65,7 +75,7 @@ export function SideBar() {
             >
               <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
               <span className="group-hover:translate-x-2 transition-all">
-                Resume
+                {language == 'en' ? 'Resume' : 'Currículo'}
               </span>
             </Link>
           </div>

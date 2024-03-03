@@ -1,3 +1,5 @@
+import { useLanguage } from '@/context/languageContext'
+
 import {
   Dialog,
   DialogContent,
@@ -7,13 +9,21 @@ import {
   DialogDescription,
 } from './shadcn/dialog'
 import { Button } from './shadcn/button'
+
 import { MdTranslate } from 'react-icons/md'
 import { FiArrowRight } from 'react-icons/fi'
 
 interface LanguageDialogProps {
   color: string
 }
+
 export function LanguageDialog({ color }: LanguageDialogProps) {
+  const { language, changeLanguage } = useLanguage()
+
+  const handleLanguageChange = (newLanguage: string) => {
+    changeLanguage(newLanguage)
+  }
+
   return (
     <Dialog>
       <DialogTrigger
@@ -25,7 +35,7 @@ export function LanguageDialog({ color }: LanguageDialogProps) {
           className={`${color} text-base font-semibold hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300`}
         >
           <MdTranslate />
-          Languague
+          {language == 'en' ? 'Language' : 'Idioma'}
         </Button>
       </DialogTrigger>
 
@@ -33,7 +43,7 @@ export function LanguageDialog({ color }: LanguageDialogProps) {
         <DialogHeader>
           <DialogTitle className="flex gap-2">
             <MdTranslate />
-            Language
+            {language == 'en' ? 'Language' : 'Idioma'}
           </DialogTitle>
         </DialogHeader>
         <div className="flex items-center space-x-2">
@@ -41,18 +51,27 @@ export function LanguageDialog({ color }: LanguageDialogProps) {
         </div>
         <DialogDescription className="flex flex-col gap-2 items-start">
           <Button
+            onClick={() => handleLanguageChange('en')} // Corrigido: Chamada da função de mudança de idioma para inglês
             type="button"
             variant="secondary"
-            className="w-full flex text-left items-center gap-2 justify-start transition-all duration-200 hover:bg-blue-400 "
+            className={`w-full flex text-left items-center gap-2 justify-start transition-all duration-200 hover:bg-blue-400 ${
+              language == 'en' && 'bg-blue-400'
+            }`}
           >
-            <FiArrowRight /> English
+            <FiArrowRight />
+            {language == 'en' ? 'English' : 'Inglês'}
           </Button>
+
           <Button
+            onClick={() => handleLanguageChange('pt-br')} // Corrigido: Chamada da função de mudança de idioma para português
             type="button"
             variant="secondary"
-            className="w-full flex text-left items-center gap-2 justify-start transition-all duration-200 hover:bg-blue-400 "
+            className={`w-full flex text-left items-center gap-2 justify-start transition-all duration-200 hover:bg-blue-400 ${
+              language == 'pt-br' && 'bg-blue-400'
+            }`}
           >
-            <FiArrowRight /> Portuguese
+            <FiArrowRight />
+            {language == 'en' ? 'Portuguese' : 'Português'}
           </Button>
         </DialogDescription>
       </DialogContent>

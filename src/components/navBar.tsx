@@ -3,8 +3,10 @@ import { useState } from 'react'
 
 import { SideBar } from './ui/sideBar'
 import { LanguageDialog } from './ui/languageDialog'
+import { useLanguage } from '@/context/languageContext'
 
 export function NavBar() {
+  const { language } = useLanguage()
   const [sizeScreen, setSizeScreen] = useState(window.innerWidth)
   function handleSizeScreen() {
     setSizeScreen(window.innerWidth)
@@ -26,20 +28,20 @@ export function NavBar() {
               to="/projects"
               className="hover:text-zinc-600 dark:hover:text-zinc-300"
             >
-              Projects
+              {language == 'en' ? 'Projects' : 'Projetos'}
             </Link>
             <Link
               to="/about"
               className="hover:text-zinc-600 dark:hover:text-zinc-300"
             >
-              About
+              {language == 'en' ? 'About' : 'Sobre mim'}
             </Link>
             <Link
               to="http://lucasbiazon.pdf"
               target="_blank"
               className="hover:text-zinc-600 dark:hover:text-zinc-300"
             >
-              Resume
+              {language == 'en' ? 'Resume' : 'Currículo'}
             </Link>
           </div>
 
