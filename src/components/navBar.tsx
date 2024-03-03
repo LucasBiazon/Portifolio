@@ -13,9 +13,23 @@ export function NavBar() {
     setSizeScreen(window.innerWidth)
   }
   window.addEventListener('resize', handleSizeScreen)
+  const nav = document.getElementById('nav') as HTMLElement
+
+  function handleSizeHeight() {
+    const sizeHeight = window.scrollY
+    if (sizeHeight > 10) {
+      nav.classList.add('backdrop-blur-sm')
+    } else {
+      nav.classList.remove('backdrop-blur-sm')
+    }
+  }
+  window.addEventListener('scroll', handleSizeHeight)
 
   return (
-    <nav className="h-16 flex items-baseline justify-between px-20 py-10">
+    <nav
+      className="h-16 sticky top-0 flex items-baseline justify-between px-10 sm:px-20 py-10 z-50"
+      id="nav"
+    >
       <h1
         className="font-roboto font-semibold text-xl
           text-zinc-900 dark:text-zinc-100 transition-colors hover:text-zinc-600 dark:hover:text-zinc-300"

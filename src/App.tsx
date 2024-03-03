@@ -6,6 +6,7 @@ import Projects from './pages/projects'
 import { NavBar } from './components/navBar'
 import { LanguageProvider } from './context/languageContext'
 import { ThemeProvider } from './context/themeContext'
+import { Footer } from './components/ui/footer'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
           </Routes>
+          <Footer />
         </ThemeProvider>
       </LanguageProvider>
     </div>

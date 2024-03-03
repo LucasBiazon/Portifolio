@@ -28,6 +28,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }
 
   useEffect(() => {
+    console.log('Dark mode detected:', darkMode) // Adicionando um console.log para depuração
     if (darkMode) {
       document.documentElement.classList.add('dark')
       localStorage.setItem('darkMode', 'true')
