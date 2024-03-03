@@ -1,7 +1,7 @@
 export default function Projects() {
   return (
-    <div>
-      <h1>Projects</h1>
+    <div className="h-screen grid place-content-center">
+      <h1>Ainda está em desenvolvimento</h1>
     </div>
   )
 }

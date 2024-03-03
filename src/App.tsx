@@ -6,7 +6,7 @@ import Projects from './pages/projects'
 import { NavBar } from './components/navBar'
 import { LanguageProvider } from './context/languageContext'
 import { ThemeProvider } from './context/themeContext'
-import { Footer } from './components/ui/footer'
+import { Footer } from './components/footer'
 
 export default function App() {
   return (
