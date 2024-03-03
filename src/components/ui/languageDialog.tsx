@@ -67,7 +67,7 @@ export function LanguageDialog({ color }: LanguageDialogProps) {
             type="button"
             variant="secondary"
             className={`w-full flex text-left items-center gap-2 justify-start transition-all duration-200 hover:bg-blue-400 ${
-              language == 'pt-br' && 'bg-blue-400'
+              language == 'pt' && 'bg-blue-400'
             }`}
           >
             <FiArrowRight />

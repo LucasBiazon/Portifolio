@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { SideBar } from './ui/sideBar'
 import { LanguageDialog } from './ui/languageDialog'
 import { useLanguage } from '@/context/languageContext'
+import { ThemeButton } from './ui/themeButton'
 
 export function NavBar() {
   const { language } = useLanguage()
@@ -45,7 +46,8 @@ export function NavBar() {
             </Link>
           </div>
 
-          <div>
+          <div className="flex items-center gap-4">
+            <ThemeButton />
             <LanguageDialog color="text-zinc-900" />
           </div>
         </>

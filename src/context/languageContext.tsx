@@ -16,11 +16,11 @@ const LanguageContext = createContext<LanguageContextType>({
 export const LanguageProvider = ({ children }: LanguageContextProps) => {
   const [language, setLanguage] = useState('en')
   useEffect(() => {
-    const userLocale = navigator?.languages?.length
+    let userLocale = navigator?.languages?.length
       ? navigator.languages[0]
       : navigator.language
-    console.log(userLocale)
     if (userLocale === 'pt-br' || userLocale === 'pt-BR') {
+      userLocale = 'pt'
       setLanguage(userLocale)
     }
     return () => {}

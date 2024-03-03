@@ -5,30 +5,20 @@ import About from './pages/about'
 import Projects from './pages/projects'
 import { NavBar } from './components/navBar'
 import { LanguageProvider } from './context/languageContext'
+import { ThemeProvider } from './context/themeContext'
 
 export default function App() {
-  if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-  localStorage.theme = 'light'
-  localStorage.theme = 'dark'
-  localStorage.removeItem('theme')
-
   return (
     <div className="bg-zinc-100 dark:bg-zinc-900 h-auto">
       <LanguageProvider>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-        </Routes>
+        <ThemeProvider>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </ThemeProvider>
       </LanguageProvider>
     </div>
   )
