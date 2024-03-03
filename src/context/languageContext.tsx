@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext, useEffect } from 'react'
 interface LanguageContextProps {
   children: React.ReactNode
 }
@@ -15,6 +15,16 @@ const LanguageContext = createContext<LanguageContextType>({
 
 export const LanguageProvider = ({ children }: LanguageContextProps) => {
   const [language, setLanguage] = useState('en')
+  useEffect(() => {
+    const userLocale = navigator?.languages?.length
+      ? navigator.languages[0]
+      : navigator.language
+    console.log(userLocale)
+    if (userLocale === 'pt-br' || userLocale === 'pt-BR') {
+      setLanguage(userLocale)
+    }
+    return () => {}
+  }, [])
 
   const changeLanguage = (newLanguage: string) => {
     setLanguage(newLanguage)
