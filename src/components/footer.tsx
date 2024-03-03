@@ -25,10 +25,10 @@ export function Footer() {
         </h1>
         <div className="flex gap-4 items-center justify-center">
           <Link to="/projects" className="hover:text-zinc-600 text-zinc-400">
-            {language == 'en' ? 'Projects' : 'Projetos'}
+            {language === 'en' ? 'Projects' : 'Projetos'}
           </Link>
           <Link to="/about" className="hover:text-zinc-600 text-zinc-400">
-            {language == 'en' ? 'About' : 'Sobre mim'}
+            {language === 'en' ? 'About' : 'Sobre mim'}
           </Link>
           <Link
             to="http://lucasbiazon.pdf"
