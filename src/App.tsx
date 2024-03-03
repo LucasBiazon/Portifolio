@@ -17,7 +17,7 @@ export default function App() {
   localStorage.removeItem('theme')
 
   return (
-    <div className='bg-zinc-100 dark:bg-zinc-900 h-screen'>
+    <div className='bg-zinc-100 dark:bg-zinc-900 h-auto'>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
